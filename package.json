@@ -7,7 +7,24 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:time-sheet-front": "node dist/time-sheet-front/server/server.mjs"
+    "serve:ssr:time-sheet-front": "node dist/time-sheet-front/server/server.mjs",
+    "prepare": "husky",
+    "lint": "npm run lint:code && npm run lint:style",
+    "lint:code": "node --max_old_space_size=4096 ./node_modules/eslint/bin/eslint.js --ext .ts,.html .",
+    "lint:style": "stylelint \"src/**/*.scss\" --config .stylelintrc.json"
+  },
+  "lint-staged": {
+    "*.{js,ts,html}": [
+      "eslint --fix",
+      "prettier --write --config .prettierrc"
+    ],
+    "*.json": [
+      "prettier --write --config .prettierrc"
+    ],
+    "*.{css,scss}": [
+      "prettier --write --config .prettierrc",
+      "stylelint --fix --config .stylelintrc.json"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -28,17 +45,38 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.3",
+    "@angular-eslint/builder": "^18.3.1",
+    "@angular-eslint/eslint-plugin": "^18.3.1",
+    "@angular-eslint/eslint-plugin-template": "^18.3.1",
+    "@angular-eslint/template-parser": "^18.3.1",
     "@angular/cli": "^18.2.3",
     "@angular/compiler-cli": "^18.2.0",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-deprecation": "^3.0.0",
+    "eslint-plugin-html": "^8.1.1",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-jsdoc": "^50.2.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-rxjs": "^5.0.3",
+    "eslint-plugin-unused-imports": "^4.1.3",
+    "husky": "^9.1.6",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "stylelint": "^16.9.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-order": "^6.0.4",
     "typescript": "~5.5.2"
   }
 }

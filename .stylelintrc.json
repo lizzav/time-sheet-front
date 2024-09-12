@@ -1,0 +1,28 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "rules": {
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": ["ng-deep"]
+      }
+    ],
+
+    "color-named": "never",
+    "number-max-precision": 3,
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "severity": "warning"
+      }
+    ],
+    "media-feature-name-disallowed-list": null,
+    "max-nesting-depth": 10,
+    "no-unknown-animations": true,
+    "font-weight-notation": "numeric",
+    "selector-max-compound-selectors": 10,
+    "selector-max-id": 0,
+    "selector-no-qualifying-type": true,
+    "selector-class-pattern": null
+  }
+}
