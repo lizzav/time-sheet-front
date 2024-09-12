@@ -14,7 +14,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'time-sheet-front' title`, () => {
+  it("should have the 'time-sheet-front' title", () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('time-sheet-front');
